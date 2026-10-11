@@ -1,7 +1,7 @@
 pipeline {
     agent any
     tools {
-        jdk 'jdk17'
+        jdk 'jdk21'
         nodejs 'node23'
     }
     environment {
@@ -20,7 +20,7 @@ pipeline {
         }
         stage("Sonarqube Analysis"){
             steps{
-                withSonarQubeEnv('sonar-server') {
+                withSonarQubeEnv('sonar') {
                     sh ''' $SCANNER_HOME/bin/sonar-scanner -Dsonar.projectName=zomato \
                     -Dsonar.projectKey=zomato '''
                 }
